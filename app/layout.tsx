@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://dna-roulette.vercel.app";
+const siteUrl = "https://dna-roulette.vercel.app";
 
 export const viewport: Viewport = {
   width: "device-width",
