@@ -2,14 +2,8 @@
 
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-
-const DNA_PAIRS = 12;
-
-// Seeded pseudo-random number generator for consistent values
-function seededRandom(seed: number) {
-  const x = Math.sin(seed * 9999) * 10000;
-  return x - Math.floor(x);
-}
+import { seededRandom } from "@/lib/utils";
+import { PARTICLES, EMOJIS } from "@/lib/constants";
 
 interface ParticleConfig {
   initialX: number;
@@ -23,7 +17,7 @@ interface ParticleConfig {
 export function DnaBackground() {
   // Pre-compute all random values using useMemo to avoid re-renders
   const particles = useMemo<ParticleConfig[]>(() => {
-    return Array.from({ length: DNA_PAIRS }).map((_, i) => ({
+    return Array.from({ length: PARTICLES.DNA_PAIRS }).map((_, i) => ({
       initialX: seededRandom(i * 7) * 100,
       initialY: seededRandom(i * 13) * 100,
       animateY: [
@@ -37,7 +31,7 @@ export function DnaBackground() {
         seededRandom(i * 41) * 100,
       ],
       duration: 20 + seededRandom(i * 47) * 10,
-      emoji: i % 3 === 0 ? "🧬" : i % 3 === 1 ? "✨" : "🔬",
+      emoji: EMOJIS.DNA[i % EMOJIS.DNA.length],
     }));
   }, []);
 

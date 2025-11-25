@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { usePrefersReducedMotion } from "@/lib/hooks";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 
 interface DnaButtonProps {
   onClick: () => void;

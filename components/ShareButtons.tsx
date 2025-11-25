@@ -4,6 +4,9 @@ import { useState, useSyncExternalStore, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Species } from "@/lib/types";
 import { Share2, MessageCircle, Link, Check } from "lucide-react";
+import { getShareText, getShareLinks } from "@/lib/sharing";
+import { getHoverTap } from "@/lib/animations";
+import { FEEDBACK } from "@/lib/constants";
 
 interface ShareButtonsProps {
   species: Species;
@@ -21,20 +24,6 @@ function useClientValue<T>(getClientValue: () => T, serverValue: T): T {
 export function ShareButtons({ species }: ShareButtonsProps) {
   const [copied, setCopied] = useState(false);
 
-  // Platform-specific share messages
-  const getShareText = useCallback((platform: 'twitter' | 'whatsapp' | 'default') => {
-    switch (platform) {
-      case 'twitter':
-        // Shorter, punchier with hashtag
-        return `🧬 Je suis ${species.percentage}% ${species.name} ! ${species.emoji}\n\n${species.funFact}\n\n#DNARoulette`;
-      case 'whatsapp':
-        // More conversational for chat
-        return `Hey ! 🧬 Je viens de découvrir que je suis ${species.percentage}% ${species.name} ! ${species.emoji}\n\n${species.funFact}\n\nEssaie toi aussi :`;
-      default:
-        return `🧬 Je suis ${species.percentage}% ${species.name} ! ${species.emoji}\n\n${species.funFact}\n\nTrouve ton match ADN :`;
-    }
-  }, [species]);
-
   // Use client-side values safely
   const shareUrl = useClientValue(
     () => window.location.href,
@@ -51,7 +40,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
       try {
         await navigator.share({
           title: "Résultat DNA Roulette",
-          text: getShareText('default'),
+          text: getShareText(species, "default"),
           url: shareUrl,
         });
       } catch (err) {
@@ -60,21 +49,16 @@ export function ShareButtons({ species }: ShareButtonsProps) {
         }
       }
     }
-  }, [getShareText, shareUrl]);
+  }, [species, shareUrl]);
 
   const handleCopyLink = useCallback(async () => {
-    const fullText = `${getShareText('default')} ${shareUrl}`;
+    const fullText = `${getShareText(species, "default")} ${shareUrl}`;
     await navigator.clipboard.writeText(fullText);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  }, [getShareText, shareUrl]);
+    setTimeout(() => setCopied(false), FEEDBACK.COPY_TIMEOUT);
+  }, [species, shareUrl]);
 
-  const shareLinks = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(getShareText('twitter'))}&url=${encodeURIComponent(shareUrl)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(getShareText('default'))}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`,
-    whatsapp: `https://wa.me/?text=${encodeURIComponent(`${getShareText('whatsapp')} ${shareUrl}`)}`,
-  };
+  const shareLinks = getShareLinks(species, shareUrl);
 
   // 44px minimum touch target for WCAG compliance
   const buttonClass = `
@@ -95,8 +79,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
           <motion.button
             onClick={handleNativeShare}
             className={`${buttonClass} bg-linear-to-r from-primary-500 to-secondary-500`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
+            {...getHoverTap()}
             aria-label="Partager via le menu natif"
           >
             <Share2 className="w-5 h-5 text-white" aria-hidden="true" />
@@ -109,8 +92,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonClass} bg-black`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          {...getHoverTap()}
           aria-label="Partager sur X (Twitter)"
         >
           <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -124,8 +106,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonClass} bg-[#1877F2]`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          {...getHoverTap()}
           aria-label="Partager sur Facebook"
         >
           <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -139,8 +120,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonClass} bg-[#0A66C2]`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          {...getHoverTap()}
           aria-label="Partager sur LinkedIn"
         >
           <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -154,8 +134,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
           target="_blank"
           rel="noopener noreferrer"
           className={`${buttonClass} bg-[#25D366]`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          {...getHoverTap()}
           aria-label="Partager sur WhatsApp"
         >
           <MessageCircle className="w-5 h-5 text-white" aria-hidden="true" />
@@ -165,8 +144,7 @@ export function ShareButtons({ species }: ShareButtonsProps) {
         <motion.button
           onClick={handleCopyLink}
           className={`${buttonClass} bg-surface-light`}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.95 }}
+          {...getHoverTap()}
           aria-label={copied ? "Lien copié" : "Copier le lien"}
         >
           {copied ? (

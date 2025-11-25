@@ -4,20 +4,15 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Species } from "@/lib/types";
 import { ShareButtons } from "./ShareButtons";
-import { usePrefersReducedMotion } from "@/lib/hooks";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
+import { seededRandom } from "@/lib/utils";
+import { PARTICLES, EMOJIS } from "@/lib/constants";
+import { SPRING_BOUNCE, getEntryAnimation, getHoverTapSubtle } from "@/lib/animations";
 
 interface ResultCardProps {
   species: Species;
   onPlayAgain: () => void;
 }
-
-// Seeded pseudo-random for consistent confetti positions
-function seededRandom(seed: number) {
-  const x = Math.sin(seed * 9999) * 10000;
-  return x - Math.floor(x);
-}
-
-const CONFETTI_EMOJIS = ["🎉", "✨", "🧬", "🎊", "💫"];
 
 interface ConfettiConfig {
   x: number;
@@ -31,11 +26,11 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
 
   // Pre-compute confetti positions
   const confetti = useMemo<ConfettiConfig[]>(() => {
-    return Array.from({ length: 20 }).map((_, i) => ({
+    return Array.from({ length: PARTICLES.CONFETTI_COUNT }).map((_, i) => ({
       x: (seededRandom(i * 7) - 0.5) * 300,
       y: (seededRandom(i * 13) - 0.5) * 300,
       rotate: seededRandom(i * 17) * 360,
-      emoji: CONFETTI_EMOJIS[i % 5],
+      emoji: EMOJIS.CONFETTI[i % EMOJIS.CONFETTI.length],
     }));
   }, []);
 
@@ -46,11 +41,7 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
       aria-label={`Résultat: Tu es ${species.percentage}% ${species.name}`}
       initial={prefersReducedMotion ? { scale: 1, rotate: 0, opacity: 1 } : { scale: 0, rotate: -10, opacity: 0 }}
       animate={{ scale: 1, rotate: 0, opacity: 1 }}
-      transition={
-        prefersReducedMotion
-          ? { duration: 0 }
-          : { type: "spring", stiffness: 200, damping: 15 }
-      }
+      transition={prefersReducedMotion ? { duration: 0 } : SPRING_BOUNCE}
     >
       {/* Confetti burst effect - hidden for reduced motion */}
       {!prefersReducedMotion && (
@@ -134,11 +125,8 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
         aria-label="Rejouer - Lancer une nouvelle analyse ADN"
         className="px-8 py-3 min-h-11 rounded-xl bg-surface-light hover:bg-surface-light/80
                    text-foreground font-medium transition-colors cursor-pointer"
-        whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        initial={prefersReducedMotion ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.6 }}
+        {...getHoverTapSubtle(prefersReducedMotion)}
+        {...getEntryAnimation(prefersReducedMotion, 0.6)}
       >
         🔄 Rejouer
       </motion.button>

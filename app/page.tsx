@@ -1,49 +1,14 @@
 "use client";
 
-import { useState, useCallback } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { DnaBackground } from "@/components/DnaBackground";
 import { DnaButton } from "@/components/DnaButton";
 import { ResultCard } from "@/components/ResultCard";
-import { getRandomSpecies } from "@/lib/utils";
-import { Species, SpeciesDatabase } from "@/lib/types";
-import speciesDatabase from "@/data/species-dna-database.json";
-
-type GameState = "idle" | "spinning" | "result";
+import { useGameState } from "@/hooks/useGameState";
 
 export default function Home() {
-  const [gameState, setGameState] = useState<GameState>("idle");
-  const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
-  const [loadingStep, setLoadingStep] = useState<1 | 2 | 3>(1);
-
-  const handleSpin = useCallback(() => {
-    setGameState("spinning");
-    setLoadingStep(1);
-
-    // Step 1: "Lecture de l'empreinte digitale" (2 seconds)
-    setTimeout(() => {
-      setLoadingStep(2);
-    }, 2000);
-
-    // Step 2: "Récupération de l'ADN" (2 more seconds = 4 total)
-    setTimeout(() => {
-      setLoadingStep(3);
-    }, 4000);
-
-    // Step 3: "Analyse de l'ADN" (2 more seconds = 6 total)
-    setTimeout(() => {
-      const species = getRandomSpecies((speciesDatabase as SpeciesDatabase).species);
-      setSelectedSpecies(species);
-      setGameState("result");
-    }, 6000);
-  }, []);
-
-  const handlePlayAgain = useCallback(() => {
-    setSelectedSpecies(null);
-    setLoadingStep(1);
-    setGameState("idle");
-  }, []);
+  const { gameState, selectedSpecies, loadingStep, spin, reset } = useGameState();
 
   return (
     <main className="relative min-h-screen flex flex-col items-center justify-center p-4 safe-area-inset overflow-hidden">
@@ -85,7 +50,7 @@ export default function Home() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
             >
-              <DnaButton onClick={handleSpin} isSpinning={false} />
+              <DnaButton onClick={spin} isSpinning={false} />
             </motion.div>
           )}
 
@@ -169,7 +134,7 @@ export default function Home() {
             >
               <ResultCard
                 species={selectedSpecies}
-                onPlayAgain={handlePlayAgain}
+                onPlayAgain={reset}
               />
             </motion.div>
           )}
