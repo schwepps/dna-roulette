@@ -36,23 +36,21 @@ export function DnaButton({ onClick, isSpinning }: DnaButtonProps) {
       {/* Button content */}
       <span className="relative z-10 flex items-center gap-3">
         {isSpinning ? (
-          <>
-            <motion.span
-              animate={prefersReducedMotion ? {} : { rotate: 360 }}
-              transition={
-                prefersReducedMotion
-                  ? { duration: 0 }
-                  : { duration: 1, repeat: Infinity, ease: "linear" }
-              }
-            >
-              🧬
-            </motion.span>
-            Analyse ADN...
-          </>
+          <motion.span
+            className="text-2xl"
+            animate={prefersReducedMotion ? {} : { rotate: 360 }}
+            transition={
+              prefersReducedMotion
+                ? { duration: 0 }
+                : { duration: 1, repeat: Infinity, ease: "linear" }
+            }
+          >
+            🧬
+          </motion.span>
         ) : (
           <>
-            <span>🎰</span>
-            Fais tourner la roulette ADN
+            <span className="text-2xl">🧬</span>
+            Lance l&apos;analyse ADN
           </>
         )}
       </span>
