@@ -42,7 +42,10 @@ export function DnaBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
+    <div
+      aria-hidden="true"
+      className="fixed inset-0 overflow-hidden pointer-events-none z-0"
+    >
       {/* Floating DNA particles */}
       {particles.map((particle, i) => (
         <motion.div

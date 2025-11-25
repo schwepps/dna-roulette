@@ -32,20 +32,20 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative min-h-screen flex flex-col items-center justify-center p-4 overflow-hidden">
+    <main className="relative min-h-screen flex flex-col items-center justify-center p-4 safe-area-inset overflow-hidden">
       <DnaBackground />
 
       {/* Header */}
       <motion.div
-        className="relative z-10 text-center mb-12"
+        className="relative z-10 text-center mb-8 sm:mb-12"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
       >
-        <h1 className="text-5xl md:text-7xl font-bold text-gradient mb-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-gradient mb-3 sm:mb-4">
           DNA Roulette
         </h1>
-        <p className="text-xl text-foreground/70 max-w-md mx-auto">
+        <p className="text-base sm:text-lg md:text-xl text-foreground/70 max-w-md mx-auto px-2">
           Fais tourner la roue et découvre avec quelle espèce tu partages le plus d&apos;ADN !
         </p>
       </motion.div>
@@ -86,6 +86,7 @@ export default function Home() {
           {gameState === "result" && selectedSpecies && (
             <motion.div
               key="result"
+              className="flex justify-center w-full"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -101,7 +102,7 @@ export default function Home() {
 
       {/* Footer */}
       <motion.footer
-        className="absolute bottom-4 text-center text-foreground/40 text-sm"
+        className="absolute bottom-4 safe-area-bottom text-center text-foreground/40 text-sm"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}

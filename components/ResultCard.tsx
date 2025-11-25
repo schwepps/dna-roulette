@@ -4,6 +4,7 @@ import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Species } from "@/lib/types";
 import { ShareButtons } from "./ShareButtons";
+import { usePrefersReducedMotion } from "@/lib/hooks";
 
 interface ResultCardProps {
   species: Species;
@@ -26,6 +27,8 @@ interface ConfettiConfig {
 }
 
 export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
+  const prefersReducedMotion = usePrefersReducedMotion();
+
   // Pre-compute confetti positions
   const confetti = useMemo<ConfettiConfig[]>(() => {
     return Array.from({ length: 20 }).map((_, i) => ({
@@ -39,61 +42,67 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
   return (
     <motion.div
       className="glass rounded-3xl p-8 max-w-md w-full mx-4 text-center"
-      initial={{ scale: 0, rotate: -10, opacity: 0 }}
+      role="region"
+      aria-label={`Résultat: Tu es ${species.percentage}% ${species.name}`}
+      initial={prefersReducedMotion ? { scale: 1, rotate: 0, opacity: 1 } : { scale: 0, rotate: -10, opacity: 0 }}
       animate={{ scale: 1, rotate: 0, opacity: 1 }}
-      transition={{
-        type: "spring",
-        stiffness: 200,
-        damping: 15,
-      }}
+      transition={
+        prefersReducedMotion
+          ? { duration: 0 }
+          : { type: "spring", stiffness: 200, damping: 15 }
+      }
     >
-      {/* Confetti burst effect */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: 2 }}
-      >
-        {confetti.map((particle, i) => (
-          <motion.span
-            key={i}
-            className="absolute text-2xl"
-            style={{
-              left: "50%",
-              top: "50%",
-            }}
-            initial={{ x: 0, y: 0, scale: 0 }}
-            animate={{
-              x: particle.x,
-              y: particle.y,
-              scale: [0, 1, 0],
-              rotate: particle.rotate,
-            }}
-            transition={{
-              duration: 1.5,
-              ease: "easeOut",
-            }}
-          >
-            {particle.emoji}
-          </motion.span>
-        ))}
-      </motion.div>
+      {/* Confetti burst effect - hidden for reduced motion */}
+      {!prefersReducedMotion && (
+        <motion.div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden="true"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: 2 }}
+        >
+          {confetti.map((particle, i) => (
+            <motion.span
+              key={i}
+              className="absolute text-2xl"
+              style={{
+                left: "50%",
+                top: "50%",
+              }}
+              initial={{ x: 0, y: 0, scale: 0 }}
+              animate={{
+                x: particle.x,
+                y: particle.y,
+                scale: [0, 1, 0],
+                rotate: particle.rotate,
+              }}
+              transition={{
+                duration: 1.5,
+                ease: "easeOut",
+              }}
+            >
+              {particle.emoji}
+            </motion.span>
+          ))}
+        </motion.div>
+      )}
 
       {/* Species emoji */}
       <motion.div
         className="text-8xl mb-4"
-        initial={{ y: -50, opacity: 0 }}
+        aria-hidden="true"
+        initial={prefersReducedMotion ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.2 }}
       >
         {species.emoji}
       </motion.div>
 
       {/* Result text */}
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
+        initial={prefersReducedMotion ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.3 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.3 }}
       >
         <p className="text-secondary-400 text-sm uppercase tracking-wider mb-2">
           Tu es
@@ -111,9 +120,9 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
 
       {/* Share buttons */}
       <motion.div
-        initial={{ y: 20, opacity: 0 }}
+        initial={prefersReducedMotion ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.5 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.5 }}
         className="mb-6"
       >
         <ShareButtons species={species} />
@@ -122,13 +131,14 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
       {/* Play again button */}
       <motion.button
         onClick={onPlayAgain}
-        className="px-8 py-3 rounded-xl bg-surface-light hover:bg-surface-light/80
+        aria-label="Rejouer - Lancer une nouvelle analyse ADN"
+        className="px-8 py-3 min-h-11 rounded-xl bg-surface-light hover:bg-surface-light/80
                    text-foreground font-medium transition-colors cursor-pointer"
-        whileHover={{ scale: 1.05 }}
+        whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        initial={{ y: 20, opacity: 0 }}
+        initial={prefersReducedMotion ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.6 }}
+        transition={prefersReducedMotion ? { duration: 0 } : { delay: 0.6 }}
       >
         🔄 Rejouer
       </motion.button>
