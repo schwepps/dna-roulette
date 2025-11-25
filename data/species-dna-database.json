@@ -1,0 +1,916 @@
+{
+  "metadata": {
+    "title": "Base de données ADN - Similarité génétique avec l'humain",
+    "description": "Pourcentages de similarité génétique entre humains et autres espèces",
+    "sources": [
+      "Smithsonian Institution Human Origins Program",
+      "National Human Genome Research Institute (NHGRI)",
+      "Nature Biotechnology",
+      "Genome Research Publications"
+    ],
+    "total_species": 100,
+    "last_updated": "2025"
+  },
+  "species": [
+    {
+      "id": 1,
+      "name": "Chimpanzé",
+      "scientificName": "Pan troglodytes",
+      "percentage": 98.8,
+      "emoji": "🐵",
+      "category": "Primates",
+      "funFact": "Notre cousin le plus proche dans le règne animal"
+    },
+    {
+      "id": 2,
+      "name": "Bonobo",
+      "scientificName": "Pan paniscus",
+      "percentage": 98.8,
+      "emoji": "🦍",
+      "category": "Primates",
+      "funFact": "Aussi proche de nous que le chimpanzé"
+    },
+    {
+      "id": 3,
+      "name": "Gorille",
+      "scientificName": "Gorilla gorilla",
+      "percentage": 98.4,
+      "emoji": "🦍",
+      "category": "Primates",
+      "funFact": "Le plus grand des primates vivants"
+    },
+    {
+      "id": 4,
+      "name": "Orang-outan",
+      "scientificName": "Pongo",
+      "percentage": 96.9,
+      "emoji": "🦧",
+      "category": "Primates",
+      "funFact": "Le seul grand singe d'Asie"
+    },
+    {
+      "id": 5,
+      "name": "Gibbon",
+      "scientificName": "Hylobatidae",
+      "percentage": 96,
+      "emoji": "🐒",
+      "category": "Primates",
+      "funFact": "Les acrobates de la canopée"
+    },
+    {
+      "id": 6,
+      "name": "Singe rhésus",
+      "scientificName": "Macaca mulatta",
+      "percentage": 93,
+      "emoji": "🐒",
+      "category": "Primates",
+      "funFact": "Star des laboratoires de recherche"
+    },
+    {
+      "id": 7,
+      "name": "Babouin",
+      "scientificName": "Papio",
+      "percentage": 91,
+      "emoji": "🐒",
+      "category": "Primates",
+      "funFact": "Vie sociale complexe et hiérarchisée"
+    },
+    {
+      "id": 8,
+      "name": "Capucin",
+      "scientificName": "Cebus",
+      "percentage": 90,
+      "emoji": "🐵",
+      "category": "Primates",
+      "funFact": "Utilise des outils pour casser des noix"
+    },
+    {
+      "id": 9,
+      "name": "Cochon",
+      "scientificName": "Sus scrofa domesticus",
+      "percentage": 98,
+      "emoji": "🐷",
+      "category": "Mammifères",
+      "funFact": "Surprise ! Plus proche génétiquement qu'un chat"
+    },
+    {
+      "id": 10,
+      "name": "Rat",
+      "scientificName": "Rattus norvegicus",
+      "percentage": 95,
+      "emoji": "🐀",
+      "category": "Mammifères",
+      "funFact": "Essentiel à la recherche médicale"
+    },
+    {
+      "id": 11,
+      "name": "Chat",
+      "scientificName": "Felis catus",
+      "percentage": 90,
+      "emoji": "🐱",
+      "category": "Mammifères",
+      "funFact": "Partage nos gènes de vision des couleurs"
+    },
+    {
+      "id": 12,
+      "name": "Souris",
+      "scientificName": "Mus musculus",
+      "percentage": 85,
+      "emoji": "🐭",
+      "category": "Mammifères",
+      "funFact": "Premier mammifère cloné avec succès"
+    },
+    {
+      "id": 13,
+      "name": "Chien",
+      "scientificName": "Canis familiaris",
+      "percentage": 84,
+      "emoji": "🐶",
+      "category": "Mammifères",
+      "funFact": "Meilleur ami de l'homme... génétiquement aussi !"
+    },
+    {
+      "id": 14,
+      "name": "Vache",
+      "scientificName": "Bos taurus",
+      "percentage": 80,
+      "emoji": "🐄",
+      "category": "Mammifères",
+      "funFact": "Partage nos gènes de digestion"
+    },
+    {
+      "id": 15,
+      "name": "Lapin",
+      "scientificName": "Oryctolagus cuniculus",
+      "percentage": 80,
+      "emoji": "🐰",
+      "category": "Mammifères",
+      "funFact": "Même système de coagulation sanguine"
+    },
+    {
+      "id": 16,
+      "name": "Cheval",
+      "scientificName": "Equus caballus",
+      "percentage": 79,
+      "emoji": "🐴",
+      "category": "Mammifères",
+      "funFact": "Structure musculaire similaire"
+    },
+    {
+      "id": 17,
+      "name": "Mouton",
+      "scientificName": "Ovis aries",
+      "percentage": 78,
+      "emoji": "🐑",
+      "category": "Mammifères",
+      "funFact": "Dolly la brebis, première clonée"
+    },
+    {
+      "id": 18,
+      "name": "Chèvre",
+      "scientificName": "Capra hircus",
+      "percentage": 77,
+      "emoji": "🐐",
+      "category": "Mammifères",
+      "funFact": "Système digestif fascinant"
+    },
+    {
+      "id": 19,
+      "name": "Éléphant",
+      "scientificName": "Elephantidae",
+      "percentage": 76,
+      "emoji": "🐘",
+      "category": "Mammifères",
+      "funFact": "Mémoire exceptionnelle encodée dans l'ADN"
+    },
+    {
+      "id": 20,
+      "name": "Lion",
+      "scientificName": "Panthera leo",
+      "percentage": 85,
+      "emoji": "🦁",
+      "category": "Mammifères",
+      "funFact": "Félin majestueux, génétiquement proche"
+    },
+    {
+      "id": 21,
+      "name": "Tigre",
+      "scientificName": "Panthera tigris",
+      "percentage": 85,
+      "emoji": "🐯",
+      "category": "Mammifères",
+      "funFact": "Rayures uniques comme nos empreintes"
+    },
+    {
+      "id": 22,
+      "name": "Ours",
+      "scientificName": "Ursidae",
+      "percentage": 83,
+      "emoji": "🐻",
+      "category": "Mammifères",
+      "funFact": "Omnivore comme nous"
+    },
+    {
+      "id": 23,
+      "name": "Panda",
+      "scientificName": "Ailuropoda melanoleuca",
+      "percentage": 83,
+      "emoji": "🐼",
+      "category": "Mammifères",
+      "funFact": "Carnivore devenu végétarien"
+    },
+    {
+      "id": 24,
+      "name": "Renard",
+      "scientificName": "Vulpes vulpes",
+      "percentage": 82,
+      "emoji": "🦊",
+      "category": "Mammifères",
+      "funFact": "Rusé génétiquement parlant"
+    },
+    {
+      "id": 25,
+      "name": "Loup",
+      "scientificName": "Canis lupus",
+      "percentage": 84,
+      "emoji": "🐺",
+      "category": "Mammifères",
+      "funFact": "Ancêtre du chien domestique"
+    },
+    {
+      "id": 26,
+      "name": "Zèbre",
+      "scientificName": "Equus zebra",
+      "percentage": 79,
+      "emoji": "🦓",
+      "category": "Mammifères",
+      "funFact": "Cheval en costume rayé"
+    },
+    {
+      "id": 27,
+      "name": "Girafe",
+      "scientificName": "Giraffa camelopardalis",
+      "percentage": 75,
+      "emoji": "🦒",
+      "category": "Mammifères",
+      "funFact": "Même nombre de vertèbres cervicales que nous"
+    },
+    {
+      "id": 28,
+      "name": "Rhinocéros",
+      "scientificName": "Rhinocerotidae",
+      "percentage": 74,
+      "emoji": "🦏",
+      "category": "Mammifères",
+      "funFact": "Peau épaisse, cœur tendre (génétiquement)"
+    },
+    {
+      "id": 29,
+      "name": "Hippopotame",
+      "scientificName": "Hippopotamus amphibius",
+      "percentage": 73,
+      "emoji": "🦛",
+      "category": "Mammifères",
+      "funFact": "Plus proche des baleines que des cochons"
+    },
+    {
+      "id": 30,
+      "name": "Chameau",
+      "scientificName": "Camelus",
+      "percentage": 72,
+      "emoji": "🐪",
+      "category": "Mammifères",
+      "funFact": "Adaptation génétique au désert"
+    },
+    {
+      "id": 31,
+      "name": "Kangourou",
+      "scientificName": "Macropus",
+      "percentage": 71,
+      "emoji": "🦘",
+      "category": "Marsupiaux",
+      "funFact": "Marsupial champion du saut"
+    },
+    {
+      "id": 32,
+      "name": "Koala",
+      "scientificName": "Phascolarctos cinereus",
+      "percentage": 71,
+      "emoji": "🐨",
+      "category": "Marsupiaux",
+      "funFact": "Dort 22h par jour, génétiquement programmé"
+    },
+    {
+      "id": 33,
+      "name": "Limace",
+      "scientificName": "Gastropoda",
+      "percentage": 70,
+      "emoji": "🐌",
+      "category": "Mollusques",
+      "funFact": "Système nerveux étonnamment similaire"
+    },
+    {
+      "id": 34,
+      "name": "Escargot",
+      "scientificName": "Helix pomatia",
+      "percentage": 70,
+      "emoji": "🐌",
+      "category": "Mollusques",
+      "funFact": "Porte sa maison... génétiquement"
+    },
+    {
+      "id": 35,
+      "name": "Dauphin",
+      "scientificName": "Delphinidae",
+      "percentage": 85,
+      "emoji": "🐬",
+      "category": "Mammifères marins",
+      "funFact": "Intelligence sociale similaire"
+    },
+    {
+      "id": 36,
+      "name": "Baleine",
+      "scientificName": "Cetacea",
+      "percentage": 84,
+      "emoji": "🐋",
+      "category": "Mammifères marins",
+      "funFact": "Mammifère marin géant, proche parent"
+    },
+    {
+      "id": 37,
+      "name": "Phoque",
+      "scientificName": "Phocidae",
+      "percentage": 80,
+      "emoji": "🦭",
+      "category": "Mammifères marins",
+      "funFact": "Retient sa respiration comme un champion"
+    },
+    {
+      "id": 38,
+      "name": "Loutre",
+      "scientificName": "Lutrinae",
+      "percentage": 82,
+      "emoji": "🦦",
+      "category": "Mammifères",
+      "funFact": "Utilise des outils comme nous"
+    },
+    {
+      "id": 39,
+      "name": "Hérisson",
+      "scientificName": "Erinaceidae",
+      "percentage": 78,
+      "emoji": "🦔",
+      "category": "Mammifères",
+      "funFact": "Petit mais génétiquement proche"
+    },
+    {
+      "id": 40,
+      "name": "Chauve-souris",
+      "scientificName": "Chiroptera",
+      "percentage": 80,
+      "emoji": "🦇",
+      "category": "Mammifères",
+      "funFact": "Seul mammifère capable de voler"
+    },
+    {
+      "id": 41,
+      "name": "Écureuil",
+      "scientificName": "Sciuridae",
+      "percentage": 81,
+      "emoji": "🐿️",
+      "category": "Mammifères",
+      "funFact": "Mémoire spatiale impressionnante"
+    },
+    {
+      "id": 42,
+      "name": "Castor",
+      "scientificName": "Castor canadensis",
+      "percentage": 79,
+      "emoji": "🦫",
+      "category": "Mammifères",
+      "funFact": "Ingénieur de la nature"
+    },
+    {
+      "id": 43,
+      "name": "Putois",
+      "scientificName": "Mustela putorius",
+      "percentage": 80,
+      "emoji": "🦡",
+      "category": "Mammifères",
+      "funFact": "Défense chimique unique"
+    },
+    {
+      "id": 44,
+      "name": "Raton laveur",
+      "scientificName": "Procyon lotor",
+      "percentage": 81,
+      "emoji": "🦝",
+      "category": "Mammifères",
+      "funFact": "Pattes avant très habiles"
+    },
+    {
+      "id": 45,
+      "name": "Poulet",
+      "scientificName": "Gallus gallus domesticus",
+      "percentage": 65,
+      "emoji": "🐔",
+      "category": "Oiseaux",
+      "funFact": "Descendant des dinosaures, proche de nous"
+    },
+    {
+      "id": 46,
+      "name": "Dinde",
+      "scientificName": "Meleagris gallopavo",
+      "percentage": 64,
+      "emoji": "🦃",
+      "category": "Oiseaux",
+      "funFact": "Thanksgiving génétique"
+    },
+    {
+      "id": 47,
+      "name": "Canard",
+      "scientificName": "Anatidae",
+      "percentage": 63,
+      "emoji": "🦆",
+      "category": "Oiseaux",
+      "funFact": "Aquatique et aérien"
+    },
+    {
+      "id": 48,
+      "name": "Perroquet",
+      "scientificName": "Psittacidae",
+      "percentage": 62,
+      "emoji": "🦜",
+      "category": "Oiseaux",
+      "funFact": "Peut imiter notre langage"
+    },
+    {
+      "id": 49,
+      "name": "Aigle",
+      "scientificName": "Aquila",
+      "percentage": 61,
+      "emoji": "🦅",
+      "category": "Oiseaux",
+      "funFact": "Vision 8x meilleure que la nôtre"
+    },
+    {
+      "id": 50,
+      "name": "Hibou",
+      "scientificName": "Strigiformes",
+      "percentage": 61,
+      "emoji": "🦉",
+      "category": "Oiseaux",
+      "funFact": "Rotation de tête à 270°"
+    },
+    {
+      "id": 51,
+      "name": "Manchot",
+      "scientificName": "Spheniscidae",
+      "percentage": 60,
+      "emoji": "🐧",
+      "category": "Oiseaux",
+      "funFact": "Oiseau qui ne vole pas mais nage"
+    },
+    {
+      "id": 52,
+      "name": "Flamant rose",
+      "scientificName": "Phoenicopterus",
+      "percentage": 59,
+      "emoji": "🦩",
+      "category": "Oiseaux",
+      "funFact": "Rose grâce à son alimentation"
+    },
+    {
+      "id": 53,
+      "name": "Pigeon",
+      "scientificName": "Columba livia",
+      "percentage": 60,
+      "emoji": "🐦",
+      "category": "Oiseaux",
+      "funFact": "GPS naturel intégré"
+    },
+    {
+      "id": 54,
+      "name": "Cygne",
+      "scientificName": "Cygnus",
+      "percentage": 62,
+      "emoji": "🦢",
+      "category": "Oiseaux",
+      "funFact": "Élégance génétique"
+    },
+    {
+      "id": 55,
+      "name": "Paon",
+      "scientificName": "Pavo cristatus",
+      "percentage": 61,
+      "emoji": "🦚",
+      "category": "Oiseaux",
+      "funFact": "Plumes spectaculaires codées génétiquement"
+    },
+    {
+      "id": 56,
+      "name": "Autruche",
+      "scientificName": "Struthio camelus",
+      "percentage": 58,
+      "emoji": "🪿",
+      "category": "Oiseaux",
+      "funFact": "Plus grand oiseau vivant"
+    },
+    {
+      "id": 57,
+      "name": "Crocodile",
+      "scientificName": "Crocodylidae",
+      "percentage": 65,
+      "emoji": "🐊",
+      "category": "Reptiles",
+      "funFact": "Inchangé depuis 200 millions d'années"
+    },
+    {
+      "id": 58,
+      "name": "Tortue",
+      "scientificName": "Testudines",
+      "percentage": 64,
+      "emoji": "🐢",
+      "category": "Reptiles",
+      "funFact": "Longévité légendaire"
+    },
+    {
+      "id": 59,
+      "name": "Serpent",
+      "scientificName": "Serpentes",
+      "percentage": 62,
+      "emoji": "🐍",
+      "category": "Reptiles",
+      "funFact": "Pas de pattes mais proche génétiquement"
+    },
+    {
+      "id": 60,
+      "name": "Lézard",
+      "scientificName": "Lacertilia",
+      "percentage": 61,
+      "emoji": "🦎",
+      "category": "Reptiles",
+      "funFact": "Peut repousser sa queue"
+    },
+    {
+      "id": 61,
+      "name": "Iguane",
+      "scientificName": "Iguana",
+      "percentage": 60,
+      "emoji": "🦎",
+      "category": "Reptiles",
+      "funFact": "Herbivore préhistorique"
+    },
+    {
+      "id": 62,
+      "name": "Grenouille",
+      "scientificName": "Anura",
+      "percentage": 67,
+      "emoji": "🐸",
+      "category": "Amphibiens",
+      "funFact": "Métamorphose fascinante"
+    },
+    {
+      "id": 63,
+      "name": "Salamandre",
+      "scientificName": "Caudata",
+      "percentage": 66,
+      "emoji": "🦎",
+      "category": "Amphibiens",
+      "funFact": "Régénération de membres"
+    },
+    {
+      "id": 64,
+      "name": "Mouche du vinaigre",
+      "scientificName": "Drosophila melanogaster",
+      "percentage": 60,
+      "emoji": "🪰",
+      "category": "Insectes",
+      "funFact": "Star de la génétique depuis 100 ans"
+    },
+    {
+      "id": 65,
+      "name": "Abeille",
+      "scientificName": "Apis mellifera",
+      "percentage": 44,
+      "emoji": "🐝",
+      "category": "Insectes",
+      "funFact": "Pollinisatrice essentielle"
+    },
+    {
+      "id": 66,
+      "name": "Fourmi",
+      "scientificName": "Formicidae",
+      "percentage": 42,
+      "emoji": "🐜",
+      "category": "Insectes",
+      "funFact": "Société ultra-organisée"
+    },
+    {
+      "id": 67,
+      "name": "Papillon",
+      "scientificName": "Lepidoptera",
+      "percentage": 45,
+      "emoji": "🦋",
+      "category": "Insectes",
+      "funFact": "Métamorphose spectaculaire"
+    },
+    {
+      "id": 68,
+      "name": "Coccinelle",
+      "scientificName": "Coccinellidae",
+      "percentage": 43,
+      "emoji": "🐞",
+      "category": "Insectes",
+      "funFact": "Prédateur efficace de pucerons"
+    },
+    {
+      "id": 69,
+      "name": "Moustique",
+      "scientificName": "Culicidae",
+      "percentage": 41,
+      "emoji": "🦟",
+      "category": "Insectes",
+      "funFact": "Animal le plus mortel au monde"
+    },
+    {
+      "id": 70,
+      "name": "Araignée",
+      "scientificName": "Araneae",
+      "percentage": 40,
+      "emoji": "🕷️",
+      "category": "Arachnides",
+      "funFact": "Soie plus résistante que l'acier"
+    },
+    {
+      "id": 71,
+      "name": "Scorpion",
+      "scientificName": "Scorpiones",
+      "percentage": 39,
+      "emoji": "🦂",
+      "category": "Arachnides",
+      "funFact": "Fluorescent sous UV"
+    },
+    {
+      "id": 72,
+      "name": "Crabe",
+      "scientificName": "Brachyura",
+      "percentage": 50,
+      "emoji": "🦀",
+      "category": "Crustacés",
+      "funFact": "Marche de côté génétiquement"
+    },
+    {
+      "id": 73,
+      "name": "Homard",
+      "scientificName": "Nephropidae",
+      "percentage": 49,
+      "emoji": "🦞",
+      "category": "Crustacés",
+      "funFact": "Peut vivre plus de 100 ans"
+    },
+    {
+      "id": 74,
+      "name": "Crevette",
+      "scientificName": "Caridea",
+      "percentage": 48,
+      "emoji": "🦐",
+      "category": "Crustacés",
+      "funFact": "Cœur dans la tête"
+    },
+    {
+      "id": 75,
+      "name": "Ver de terre",
+      "scientificName": "Lumbricina",
+      "percentage": 38,
+      "emoji": "🪱",
+      "category": "Annélides",
+      "funFact": "Ingénieur du sol"
+    },
+    {
+      "id": 76,
+      "name": "Pieuvre",
+      "scientificName": "Octopoda",
+      "percentage": 52,
+      "emoji": "🐙",
+      "category": "Mollusques",
+      "funFact": "3 cœurs et sang bleu"
+    },
+    {
+      "id": 77,
+      "name": "Calmar",
+      "scientificName": "Teuthida",
+      "percentage": 51,
+      "emoji": "🦑",
+      "category": "Mollusques",
+      "funFact": "Système nerveux complexe"
+    },
+    {
+      "id": 78,
+      "name": "Méduse",
+      "scientificName": "Medusozoa",
+      "percentage": 60,
+      "emoji": "🪼",
+      "category": "Cnidaires",
+      "funFact": "Pas de cerveau mais proche génétiquement"
+    },
+    {
+      "id": 79,
+      "name": "Corail",
+      "scientificName": "Anthozoa",
+      "percentage": 58,
+      "emoji": "🪸",
+      "category": "Cnidaires",
+      "funFact": "Animal colonial fascinant"
+    },
+    {
+      "id": 80,
+      "name": "Éponge de mer",
+      "scientificName": "Porifera",
+      "percentage": 56,
+      "emoji": "🧽",
+      "category": "Spongiaires",
+      "funFact": "Animal le plus simple existant"
+    },
+    {
+      "id": 81,
+      "name": "Poisson rouge",
+      "scientificName": "Carassius auratus",
+      "percentage": 70,
+      "emoji": "🐠",
+      "category": "Poissons",
+      "funFact": "Mémoire de 3 mois, pas 3 secondes !"
+    },
+    {
+      "id": 82,
+      "name": "Poisson-clown",
+      "scientificName": "Amphiprioninae",
+      "percentage": 69,
+      "emoji": "🐟",
+      "category": "Poissons",
+      "funFact": "Nemo dans nos gènes"
+    },
+    {
+      "id": 83,
+      "name": "Requin",
+      "scientificName": "Selachimorpha",
+      "percentage": 68,
+      "emoji": "🦈",
+      "category": "Poissons",
+      "funFact": "Squelette en cartilage, pas en os"
+    },
+    {
+      "id": 84,
+      "name": "Raie",
+      "scientificName": "Batoidea",
+      "percentage": 67,
+      "emoji": "🐟",
+      "category": "Poissons",
+      "funFact": "Requin aplati"
+    },
+    {
+      "id": 85,
+      "name": "Saumon",
+      "scientificName": "Salmo salar",
+      "percentage": 66,
+      "emoji": "🐟",
+      "category": "Poissons",
+      "funFact": "Retourne à son lieu de naissance"
+    },
+    {
+      "id": 86,
+      "name": "Thon",
+      "scientificName": "Thunnus",
+      "percentage": 65,
+      "emoji": "🐟",
+      "category": "Poissons",
+      "funFact": "Nageur ultra-rapide"
+    },
+    {
+      "id": 87,
+      "name": "Banane",
+      "scientificName": "Musa",
+      "percentage": 60,
+      "emoji": "🍌",
+      "category": "Plantes",
+      "funFact": "Le classique viral ! Oui, 60% avec un fruit"
+    },
+    {
+      "id": 88,
+      "name": "Tomate",
+      "scientificName": "Solanum lycopersicum",
+      "percentage": 55,
+      "emoji": "🍅",
+      "category": "Plantes",
+      "funFact": "Fruit ou légume ? Génétiquement proche !"
+    },
+    {
+      "id": 89,
+      "name": "Pomme de terre",
+      "scientificName": "Solanum tuberosum",
+      "percentage": 54,
+      "emoji": "🥔",
+      "category": "Plantes",
+      "funFact": "Tu es littéralement un peu patate"
+    },
+    {
+      "id": 90,
+      "name": "Chêne",
+      "scientificName": "Quercus",
+      "percentage": 50,
+      "emoji": "🌳",
+      "category": "Plantes",
+      "funFact": "Arbre majestueux, cousin génétique"
+    },
+    {
+      "id": 91,
+      "name": "Rose",
+      "scientificName": "Rosa",
+      "percentage": 48,
+      "emoji": "🌹",
+      "category": "Plantes",
+      "funFact": "Beauté génétique partagée"
+    },
+    {
+      "id": 92,
+      "name": "Cannabis",
+      "scientificName": "Cannabis sativa",
+      "percentage": 53,
+      "emoji": "🌿",
+      "category": "Plantes",
+      "funFact": "Plante controversée, gènes partagés"
+    },
+    {
+      "id": 93,
+      "name": "Tournesol",
+      "scientificName": "Helianthus annuus",
+      "percentage": 49,
+      "emoji": "🌻",
+      "category": "Plantes",
+      "funFact": "Suit le soleil génétiquement"
+    },
+    {
+      "id": 94,
+      "name": "Cactus",
+      "scientificName": "Cactaceae",
+      "percentage": 47,
+      "emoji": "🌵",
+      "category": "Plantes",
+      "funFact": "Survie en milieu extrême"
+    },
+    {
+      "id": 95,
+      "name": "Champignon",
+      "scientificName": "Fungi",
+      "percentage": 55,
+      "emoji": "🍄",
+      "category": "Mycètes",
+      "funFact": "Ni plante ni animal, mais proche !"
+    },
+    {
+      "id": 96,
+      "name": "Levure",
+      "scientificName": "Saccharomyces cerevisiae",
+      "percentage": 50,
+      "emoji": "🧫",
+      "category": "Mycètes",
+      "funFact": "Fait notre pain ET notre bière"
+    },
+    {
+      "id": 97,
+      "name": "Algue",
+      "scientificName": "Phaeophyceae",
+      "percentage": 45,
+      "emoji": "🌊",
+      "category": "Algues",
+      "funFact": "Produit 70% de l'oxygène terrestre"
+    },
+    {
+      "id": 98,
+      "name": "Paramècie",
+      "scientificName": "Paramecium",
+      "percentage": 35,
+      "emoji": "🦠",
+      "category": "Protozoaires",
+      "funFact": "Organisme unicellulaire complexe"
+    },
+    {
+      "id": 99,
+      "name": "Bactérie E. coli",
+      "scientificName": "Escherichia coli",
+      "percentage": 7,
+      "emoji": "🦠",
+      "category": "Bactéries",
+      "funFact": "Même les bactéries partagent des gènes avec nous"
+    },
+    {
+      "id": 100,
+      "name": "Virus",
+      "scientificName": "Viruses",
+      "percentage": 8,
+      "emoji": "🦠",
+      "category": "Virus",
+      "funFact": "8% de notre ADN vient d'anciens virus !"
+    }
+  ]
+}
