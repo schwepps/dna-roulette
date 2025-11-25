@@ -122,13 +122,13 @@ export function ResultCard({ species, onPlayAgain }: ResultCardProps) {
       {/* Play again button */}
       <motion.button
         onClick={onPlayAgain}
-        aria-label="Rejouer - Lancer une nouvelle analyse ADN"
+        aria-label="Relancer - Lancer une nouvelle analyse ADN"
         className="px-8 py-3 min-h-11 rounded-xl bg-surface-light hover:bg-surface-light/80
                    text-foreground font-medium transition-colors cursor-pointer"
         {...getHoverTapSubtle(prefersReducedMotion)}
         {...getEntryAnimation(prefersReducedMotion, 0.6)}
       >
-        🔄 Rejouer
+        🎰 Relancer
       </motion.button>
     </motion.div>
   );
