@@ -1,11 +1,23 @@
 import { Species } from "./types";
 
 /**
- * Selects a random species from the provided array
+ * Selects a random species from the provided array, excluding recently selected ones
+ * to prevent perceived repetition
  */
-export function getRandomSpecies(species: Species[]): Species {
-  const randomIndex = Math.floor(Math.random() * species.length);
-  return species[randomIndex];
+export function getRandomSpecies(
+  species: Species[],
+  recentSpecies: Species[] = []
+): Species {
+  // Filter out recently selected species
+  const availableSpecies = species.filter(
+    (s) => !recentSpecies.some((recent) => recent.id === s.id)
+  );
+
+  // Fallback to full list if too few remaining (edge case)
+  const pool = availableSpecies.length > 0 ? availableSpecies : species;
+
+  const randomIndex = Math.floor(Math.random() * pool.length);
+  return pool[randomIndex];
 }
 
 /**

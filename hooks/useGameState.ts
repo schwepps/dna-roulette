@@ -20,10 +20,13 @@ interface UseGameStateReturn {
 /**
  * Custom hook to manage game state and spin orchestration
  */
+const RECENT_EXCLUSION_COUNT = 5;
+
 export function useGameState(): UseGameStateReturn {
   const [gameState, setGameState] = useState<GameState>("idle");
   const [selectedSpecies, setSelectedSpecies] = useState<Species | null>(null);
   const [loadingStep, setLoadingStep] = useState<LoadingStep>(1);
+  const [recentSpecies, setRecentSpecies] = useState<Species[]>([]);
 
   const spin = useCallback(() => {
     setGameState("spinning");
@@ -42,12 +45,14 @@ export function useGameState(): UseGameStateReturn {
     // Step 3: "Analyse de l'ADN" - show result
     setTimeout(() => {
       const species = getRandomSpecies(
-        (speciesDatabase as SpeciesDatabase).species
+        (speciesDatabase as SpeciesDatabase).species,
+        recentSpecies
       );
       setSelectedSpecies(species);
+      setRecentSpecies((prev) => [species, ...prev].slice(0, RECENT_EXCLUSION_COUNT));
       setGameState("result");
     }, GAME_TIMING.RESULT_DELAY);
-  }, []);
+  }, [recentSpecies]);
 
   const reset = useCallback(() => {
     setSelectedSpecies(null);
